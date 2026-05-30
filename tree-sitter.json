@@ -1,0 +1,41 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "tbd",
+      "camelcase": "Tbd",
+      "title": "Tbd",
+      "scope": "source.tbd",
+      "file-types": [
+        "tbd"
+      ],
+      "injection-regex": "^tbd$",
+      "class-name": "TreeSitterTbd"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tbd grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "nduvalhall",
+        "url": ""
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tbd-lang/tree-sitter-tbd",
+      "funding": ""
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "java": false,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
