@@ -1,74 +1,78 @@
+; Comments
+(comment) @comment
+
+; Literals
+(string) @string
+(char) @character
+(integer) @number
+(float) @number.float
+
 ; Keywords
 [
-  "fun"
   "let"
   "let!"
   "let?"
   "in"
+  "then"
+] @keyword
+
+"fun" @keyword.function
+
+[
   "when"
   "is"
-  "then"
   "and"
-  "pub"
-] @keyword
+] @keyword.conditional
+
+"pub" @keyword.modifier
 
 ; Operators
 [
-  "->"
   "|>"
-  "="
-  "::"
-  "&&"
   "||"
+  "&&"
+  "=="
+  "!="
   ">="
   "<="
   ">"
   "<"
-  "=="
-  "!="
+  "::"
   "+"
   "-"
   "*"
   "/"
+  "="
+  "->"
 ] @operator
 
 ; Punctuation
 [ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
-[ "," "." "|" ]             @punctuation.delimiter
+[ "," "|" "." ] @punctuation.delimiter
 
-; Function definition name
-(fun_def name: (lower_ident) @function)
-
-; Local function name
-(expr_fun name: (lower_ident) @function)
-
-; Call sites
-(expr_call
-  callee: (lower_ident) @function.call)
-
-(expr_call
-  module: (upper_ident) @module
-  name:   (lower_ident) @function.call)
-
-; Lambda
-(expr_lambda "->" @operator)
-
-; Constructors / modules
-(upper_ident) @type.enum.variant
-
-(patt_constructor name: (upper_ident) @type.enum.variant)
-
-; Variables / identifiers
+; --- Fallbacks (overridden by the specific captures below) ---
 (lower_ident) @variable
+(upper_ident) @constructor
 
-; Literals
-(literal_string) @string
-(literal_char)   @character
-(literal_int)    @number
-(literal_float)  @number.float
+; Definitions
+(function_definition name: (lower_ident) @function)
+(let_function_expression name: (lower_ident) @function)
+
+; Parameters
+(parameters (lower_ident) @variable.parameter)
+
+; Qualified names: Module.name
+(qualified_identifier name: (lower_ident) @function)
+(qualified_identifier module: (upper_ident) @module)
+
+; Calls
+(call_expression
+  function: (lower_ident) @function.call)
+(call_expression
+  function: (qualified_identifier name: (lower_ident) @function.call))
+
+; Constructor patterns
+(constructor_pattern constructor: (upper_ident) @constructor)
 
 ; Wildcard
-(patt_wildcard) @variable.builtin
-
-; Comments
-(comment) @comment @spell
+(wildcard_pattern) @variable.builtin
