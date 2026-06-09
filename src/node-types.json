@@ -1,6 +1,6 @@
 [
   {
-    "type": "argument_list",
+    "type": "expr_binop",
     "named": true,
     "fields": {},
     "children": {
@@ -8,127 +8,280 @@
       "required": true,
       "types": [
         {
-          "type": "binary_expression",
+          "type": "expr_binop",
           "named": true
         },
         {
-          "type": "call_expression",
+          "type": "expr_call",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "expr_fun",
           "named": true
         },
         {
-          "type": "if_expression",
+          "type": "expr_lambda",
           "named": true
         },
         {
-          "type": "let_expression",
+          "type": "expr_let",
           "named": true
         },
         {
-          "type": "list_expression",
+          "type": "expr_let_option",
           "named": true
         },
         {
-          "type": "nested_function",
+          "type": "expr_let_result",
           "named": true
         },
         {
-          "type": "number",
+          "type": "expr_list",
           "named": true
         },
         {
-          "type": "parenthesized_expression",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "sequence_expression",
+          "type": "expr_seq",
           "named": true
         },
         {
-          "type": "string",
+          "type": "expr_tuple",
           "named": true
         },
         {
-          "type": "unit",
+          "type": "expr_when",
+          "named": true
+        },
+        {
+          "type": "literal_char",
+          "named": true
+        },
+        {
+          "type": "literal_float",
+          "named": true
+        },
+        {
+          "type": "literal_int",
+          "named": true
+        },
+        {
+          "type": "literal_string",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "binary_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "list_expression",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "call_expression",
+    "type": "expr_call",
     "named": true,
     "fields": {
-      "arguments": {
-        "multiple": false,
+      "args": {
+        "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "argument_list",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
             "named": true
           }
         ]
       },
-      "fun": {
-        "multiple": false,
+      "callee": {
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "call_expression",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "expr_call",
             "named": true
           },
           {
-            "type": "parenthesized_expression",
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "module": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "lower_ident",
             "named": true
           }
         ]
@@ -136,59 +289,91 @@
     }
   },
   {
-    "type": "function_declaration",
+    "type": "expr_fun",
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
             "named": true
           },
           {
-            "type": "call_expression",
+            "type": "expr_call",
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "expr_fun",
             "named": true
           },
           {
-            "type": "if_expression",
+            "type": "expr_lambda",
             "named": true
           },
           {
-            "type": "let_expression",
+            "type": "expr_let",
             "named": true
           },
           {
-            "type": "list_expression",
+            "type": "expr_let_option",
             "named": true
           },
           {
-            "type": "nested_function",
+            "type": "expr_let_result",
             "named": true
           },
           {
-            "type": "number",
+            "type": "expr_list",
             "named": true
           },
           {
-            "type": "parenthesized_expression",
+            "type": "expr_pipe",
             "named": true
           },
           {
-            "type": "sequence_expression",
+            "type": "expr_seq",
             "named": true
           },
           {
-            "type": "string",
+            "type": "expr_tuple",
             "named": true
           },
           {
-            "type": "unit",
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
             "named": true
           }
         ]
@@ -198,17 +383,103 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "lower_ident",
             "named": true
           }
         ]
       },
-      "parameters": {
+      "params": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
-            "type": "parameter_list",
+            "type": "param_list",
+            "named": true
+          }
+        ]
+      },
+      "rest": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
             "named": true
           }
         ]
@@ -216,291 +487,289 @@
     }
   },
   {
-    "type": "if_expression",
-    "named": true,
-    "fields": {
-      "alternative": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "call_expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "if_expression",
-            "named": true
-          },
-          {
-            "type": "let_expression",
-            "named": true
-          },
-          {
-            "type": "list_expression",
-            "named": true
-          },
-          {
-            "type": "nested_function",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "sequence_expression",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "unit",
-            "named": true
-          }
-        ]
-      },
-      "condition": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "call_expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "if_expression",
-            "named": true
-          },
-          {
-            "type": "let_expression",
-            "named": true
-          },
-          {
-            "type": "list_expression",
-            "named": true
-          },
-          {
-            "type": "nested_function",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "sequence_expression",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "unit",
-            "named": true
-          }
-        ]
-      },
-      "consequence": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "call_expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "if_expression",
-            "named": true
-          },
-          {
-            "type": "let_expression",
-            "named": true
-          },
-          {
-            "type": "list_expression",
-            "named": true
-          },
-          {
-            "type": "nested_function",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "sequence_expression",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "unit",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "let_expression",
+    "type": "expr_lambda",
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
             "named": true
           },
           {
-            "type": "call_expression",
+            "type": "expr_call",
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "expr_fun",
             "named": true
           },
           {
-            "type": "if_expression",
+            "type": "expr_lambda",
             "named": true
           },
           {
-            "type": "let_expression",
+            "type": "expr_let",
             "named": true
           },
           {
-            "type": "list_expression",
+            "type": "expr_let_option",
             "named": true
           },
           {
-            "type": "nested_function",
+            "type": "expr_let_result",
             "named": true
           },
           {
-            "type": "number",
+            "type": "expr_list",
             "named": true
           },
           {
-            "type": "parenthesized_expression",
+            "type": "expr_pipe",
             "named": true
           },
           {
-            "type": "sequence_expression",
+            "type": "expr_seq",
             "named": true
           },
           {
-            "type": "string",
+            "type": "expr_tuple",
             "named": true
           },
           {
-            "type": "unit",
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
             "named": true
           }
         ]
       },
-      "name": {
+      "params": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "param_list",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "expr_let",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pattern",
             "named": true
           }
         ]
       },
       "value": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
             "named": true
           },
           {
-            "type": "call_expression",
+            "type": "expr_call",
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "expr_fun",
             "named": true
           },
           {
-            "type": "if_expression",
+            "type": "expr_lambda",
             "named": true
           },
           {
-            "type": "let_expression",
+            "type": "expr_let",
             "named": true
           },
           {
-            "type": "list_expression",
+            "type": "expr_let_option",
             "named": true
           },
           {
-            "type": "nested_function",
+            "type": "expr_let_result",
             "named": true
           },
           {
-            "type": "number",
+            "type": "expr_list",
             "named": true
           },
           {
-            "type": "parenthesized_expression",
+            "type": "expr_pipe",
             "named": true
           },
           {
-            "type": "sequence_expression",
+            "type": "expr_seq",
             "named": true
           },
           {
-            "type": "string",
+            "type": "expr_tuple",
             "named": true
           },
           {
-            "type": "unit",
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
             "named": true
           }
         ]
@@ -508,7 +777,383 @@
     }
   },
   {
-    "type": "list_expression",
+    "type": "expr_let_option",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pattern",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "expr_let_result",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pattern",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "expr_list",
     "named": true,
     "fields": {},
     "children": {
@@ -516,128 +1161,438 @@
       "required": false,
       "types": [
         {
-          "type": "binary_expression",
+          "type": "expr_binop",
           "named": true
         },
         {
-          "type": "call_expression",
+          "type": "expr_call",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "expr_fun",
           "named": true
         },
         {
-          "type": "if_expression",
+          "type": "expr_lambda",
           "named": true
         },
         {
-          "type": "let_expression",
+          "type": "expr_let",
           "named": true
         },
         {
-          "type": "list_expression",
+          "type": "expr_let_option",
           "named": true
         },
         {
-          "type": "nested_function",
+          "type": "expr_let_result",
           "named": true
         },
         {
-          "type": "number",
+          "type": "expr_list",
           "named": true
         },
         {
-          "type": "parenthesized_expression",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "sequence_expression",
+          "type": "expr_seq",
           "named": true
         },
         {
-          "type": "string",
+          "type": "expr_tuple",
           "named": true
         },
         {
-          "type": "unit",
+          "type": "expr_when",
+          "named": true
+        },
+        {
+          "type": "literal_char",
+          "named": true
+        },
+        {
+          "type": "literal_float",
+          "named": true
+        },
+        {
+          "type": "literal_int",
+          "named": true
+        },
+        {
+          "type": "literal_string",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "nested_function",
+    "type": "expr_pipe",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": false,
+      "left": {
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
             "named": true
           },
           {
-            "type": "call_expression",
+            "type": "expr_call",
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "expr_fun",
             "named": true
           },
           {
-            "type": "if_expression",
+            "type": "expr_lambda",
             "named": true
           },
           {
-            "type": "let_expression",
+            "type": "expr_let",
             "named": true
           },
           {
-            "type": "list_expression",
+            "type": "expr_let_option",
             "named": true
           },
           {
-            "type": "nested_function",
+            "type": "expr_let_result",
             "named": true
           },
           {
-            "type": "number",
+            "type": "expr_list",
             "named": true
           },
           {
-            "type": "parenthesized_expression",
+            "type": "expr_pipe",
             "named": true
           },
           {
-            "type": "sequence_expression",
+            "type": "expr_seq",
             "named": true
           },
           {
-            "type": "string",
+            "type": "expr_tuple",
             "named": true
           },
           {
-            "type": "unit",
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
             "named": true
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "function_declaration",
-          "named": true
-        }
-      ]
     }
   },
   {
-    "type": "parameter_list",
+    "type": "expr_seq",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "expr_tuple",
     "named": true,
     "fields": {},
     "children": {
@@ -645,14 +1600,408 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "expr_binop",
+          "named": true
+        },
+        {
+          "type": "expr_call",
+          "named": true
+        },
+        {
+          "type": "expr_fun",
+          "named": true
+        },
+        {
+          "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_let",
+          "named": true
+        },
+        {
+          "type": "expr_let_option",
+          "named": true
+        },
+        {
+          "type": "expr_let_result",
+          "named": true
+        },
+        {
+          "type": "expr_list",
+          "named": true
+        },
+        {
+          "type": "expr_pipe",
+          "named": true
+        },
+        {
+          "type": "expr_seq",
+          "named": true
+        },
+        {
+          "type": "expr_tuple",
+          "named": true
+        },
+        {
+          "type": "expr_when",
+          "named": true
+        },
+        {
+          "type": "literal_char",
+          "named": true
+        },
+        {
+          "type": "literal_float",
+          "named": true
+        },
+        {
+          "type": "literal_int",
+          "named": true
+        },
+        {
+          "type": "literal_string",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "parenthesized_expression",
+    "type": "expr_when",
+    "named": true,
+    "fields": {
+      "branches": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "when_branch",
+            "named": true
+          }
+        ]
+      },
+      "subject": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "fun_def",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "lower_ident",
+            "named": true
+          }
+        ]
+      },
+      "params": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "param_list",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "literal_char",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "literal_float",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "literal_string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "param_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "pattern",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "patt_cons",
+    "named": true,
+    "fields": {
+      "head": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pattern",
+            "named": true
+          }
+        ]
+      },
+      "tail": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pattern",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "patt_constructor",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "pattern",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "patt_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "pattern",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "patt_tuple",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "pattern",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pattern",
     "named": true,
     "fields": {},
     "children": {
@@ -660,152 +2009,50 @@
       "required": true,
       "types": [
         {
-          "type": "binary_expression",
+          "type": "literal_char",
           "named": true
         },
         {
-          "type": "call_expression",
+          "type": "literal_float",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "literal_int",
           "named": true
         },
         {
-          "type": "if_expression",
+          "type": "literal_string",
           "named": true
         },
         {
-          "type": "let_expression",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "list_expression",
+          "type": "patt_cons",
           "named": true
         },
         {
-          "type": "nested_function",
+          "type": "patt_constructor",
           "named": true
         },
         {
-          "type": "number",
+          "type": "patt_list",
           "named": true
         },
         {
-          "type": "parenthesized_expression",
+          "type": "patt_tuple",
           "named": true
         },
         {
-          "type": "sequence_expression",
+          "type": "patt_wildcard",
           "named": true
         },
         {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "unit",
+          "type": "upper_ident",
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "sequence_expression",
-    "named": true,
-    "fields": {
-      "left": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "call_expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "list_expression",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "unit",
-            "named": true
-          }
-        ]
-      },
-      "right": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "call_expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "if_expression",
-            "named": true
-          },
-          {
-            "type": "let_expression",
-            "named": true
-          },
-          {
-            "type": "list_expression",
-            "named": true
-          },
-          {
-            "type": "nested_function",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "sequence_expression",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "unit",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -818,19 +2065,214 @@
       "required": false,
       "types": [
         {
-          "type": "function_declaration",
+          "type": "fun_def",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "unit",
+    "type": "when_branch",
     "named": true,
-    "fields": {}
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "guard": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "expr_binop",
+            "named": true
+          },
+          {
+            "type": "expr_call",
+            "named": true
+          },
+          {
+            "type": "expr_fun",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_let",
+            "named": true
+          },
+          {
+            "type": "expr_let_option",
+            "named": true
+          },
+          {
+            "type": "expr_let_result",
+            "named": true
+          },
+          {
+            "type": "expr_list",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_seq",
+            "named": true
+          },
+          {
+            "type": "expr_tuple",
+            "named": true
+          },
+          {
+            "type": "expr_when",
+            "named": true
+          },
+          {
+            "type": "literal_char",
+            "named": true
+          },
+          {
+            "type": "literal_float",
+            "named": true
+          },
+          {
+            "type": "literal_int",
+            "named": true
+          },
+          {
+            "type": "literal_string",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pattern",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "!=",
+    "named": false
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "&&",
+    "named": false
+  },
+  {
+    "type": "'",
     "named": false
   },
   {
@@ -858,19 +2300,19 @@
     "named": false
   },
   {
+    "type": "->",
+    "named": false
+  },
+  {
+    "type": ".",
+    "named": false
+  },
+  {
     "type": "/",
     "named": false
   },
   {
-    "type": ":",
-    "named": false
-  },
-  {
     "type": "::",
-    "named": false
-  },
-  {
-    "type": ";",
     "named": false
   },
   {
@@ -906,24 +2348,16 @@
     "named": false
   },
   {
+    "type": "and",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true,
     "extra": true
   },
   {
-    "type": "else",
-    "named": false
-  },
-  {
     "type": "fun",
-    "named": false
-  },
-  {
-    "type": "identifier",
-    "named": true
-  },
-  {
-    "type": "if",
     "named": false
   },
   {
@@ -931,15 +2365,67 @@
     "named": false
   },
   {
+    "type": "is",
+    "named": false
+  },
+  {
     "type": "let",
     "named": false
   },
   {
-    "type": "number",
+    "type": "let!",
+    "named": false
+  },
+  {
+    "type": "let?",
+    "named": false
+  },
+  {
+    "type": "literal_int",
     "named": true
   },
   {
-    "type": "string",
+    "type": "lower_ident",
     "named": true
+  },
+  {
+    "type": "patt_wildcard",
+    "named": true
+  },
+  {
+    "type": "pub",
+    "named": false
+  },
+  {
+    "type": "then",
+    "named": false
+  },
+  {
+    "type": "upper_ident",
+    "named": true
+  },
+  {
+    "type": "when",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
+    "named": false
+  },
+  {
+    "type": "|>",
+    "named": false
+  },
+  {
+    "type": "||",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]

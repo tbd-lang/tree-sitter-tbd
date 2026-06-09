@@ -1,159 +1,271 @@
 module.exports = grammar({
-  name: "tbd",
+  name: 'tbd',
 
-  extras: ($) => [/\s/, $.comment],
-
-  word: ($) => $.identifier,
-
-  precedences: ($) => [
-    [
-      "call",
-      "unary",
-      "multiplicative",
-      "additive",
-      "cons",
-      "comparative",
-      "sequence",
-      "if",
-      "let",
-    ],
+  extras: $ => [
+    /\s/,
+    $.comment,
   ],
 
+
   rules: {
-    source_file: ($) => repeat($._top_level),
 
-    _top_level: ($) => $.function_declaration,
+    // -------------------------------------------------------------------------
+    // Top level
+    // -------------------------------------------------------------------------
 
-    function_declaration: ($) =>
-      seq(
-        "fun",
-        field("name", $.identifier),
-        "(",
-        optional(field("parameters", $.parameter_list)),
-        ")",
-        ":",
-        field("body", $._expression),
-      ),
+    source_file: $ => repeat($._top_level),
 
-    parameter_list: ($) => seq($.identifier, repeat(seq(",", $.identifier))),
+    _top_level: $ => $.fun_def,
 
-    _expression: ($) =>
-      choice(
-        $.let_expression,
-        $.if_expression,
-        $.nested_function,
-        $.sequence_expression,
-        $._binary_or_atom,
-      ),
+    fun_def: $ => seq(
+      optional('pub'),
+      'fun',
+      field('name', $.lower_ident),
+      field('params', $.param_list),
+      '=',
+      field('body', $._expr),
+    ),
 
-    nested_function: ($) =>
-      seq($.function_declaration, "in", field("body", $._expression)),
+    param_list: $ => seq(
+      '(',
+      commaSep($.pattern),
+      ')',
+    ),
 
-    let_expression: ($) =>
-      prec.right(
-        "let",
-        seq(
-          "let",
-          field("name", $.identifier),
-          "=",
-          field("value", $._expression),
-          "in",
-          field("body", $._expression),
-        ),
-      ),
+    // -------------------------------------------------------------------------
+    // Expressions
+    // -------------------------------------------------------------------------
 
-    if_expression: ($) =>
-      prec.right(
-        "if",
-        seq(
-          "if",
-          field("condition", $._expression),
-          ":",
-          field("consequence", $._expression),
-          optional(seq("else", ":", field("alternative", $._expression))),
-        ),
-      ),
+    _expr: $ => choice(
+      $.expr_let,
+      $.expr_let_result,
+      $.expr_let_option,
+      $.expr_seq,
+      $.expr_fun,
+      $.expr_lambda,
+      $.expr_when,
+      $.expr_call,
+      $.expr_binop,
+      $.expr_pipe,
+      $._expr_atom,
+    ),
 
-    sequence_expression: ($) =>
-      prec.right(
-        "sequence",
-        seq(
-          field("left", $._binary_or_atom),
-          ";",
-          field("right", $._expression),
-        ),
-      ),
+    // let <patt> = <expr> in <expr>
+    expr_let: $ => seq(
+      'let',
+      field('pattern', $.pattern),
+      '=',
+      field('value', $._expr),
+      'in',
+      field('body', $._expr),
+    ),
 
-    _binary_or_atom: ($) => choice($.binary_expression, $._atom),
+    // let! <patt> = <expr> in <expr>
+    expr_let_result: $ => seq(
+      'let!',
+      field('pattern', $.pattern),
+      '=',
+      field('value', $._expr),
+      'in',
+      field('body', $._expr),
+    ),
 
-    binary_expression: ($) =>
-      choice(
-        prec.left(
-          "comparative",
-          seq(
-            $._binary_or_atom,
-            choice(">", "<", "==", "!=", ">=", "<="),
-            $._binary_or_atom,
-          ),
-        ),
-        prec.right("cons", seq($._binary_or_atom, "::", $._binary_or_atom)),
-        prec.left(
-          "additive",
-          seq($._binary_or_atom, choice("+", "-"), $._binary_or_atom),
-        ),
-        prec.left(
-          "multiplicative",
-          seq($._binary_or_atom, choice("*", "/"), $._binary_or_atom),
-        ),
-      ),
+    // let? <patt> = <expr> in <expr>
+    expr_let_option: $ => seq(
+      'let?',
+      field('pattern', $.pattern),
+      '=',
+      field('value', $._expr),
+      'in',
+      field('body', $._expr),
+    ),
 
-    _atom: ($) =>
-      choice(
-        $.call_expression,
-        $.list_expression,
-        $.unit,
-        $.number,
-        $.string,
-        $.identifier,
-        $.parenthesized_expression,
-      ),
+    // <expr> then <expr>
+    expr_seq: $ => prec.right(1, seq(
+      field('left', $._expr),
+      'then',
+      field('right', $._expr),
+    )),
 
-    call_expression: ($) =>
-      prec(
-        "call",
-        seq(
-          field(
-            "fun",
-            choice($.identifier, $.call_expression, $.parenthesized_expression),
-          ),
-          "(",
-          optional(field("arguments", $.argument_list)),
-          ")",
-        ),
-      ),
+    // fun <lower_ident>(patt[]) = <expr> in <expr>
+    expr_fun: $ => seq(
+      'fun',
+      field('name', $.lower_ident),
+      field('params', $.param_list),
+      '=',
+      field('body', $._expr),
+      'in',
+      field('rest', $._expr),
+    ),
 
-    argument_list: ($) => seq($._expression, repeat(seq(",", $._expression))),
+    // fun(patt[]) -> <expr>
+    expr_lambda: $ => seq(
+      'fun',
+      field('params', $.param_list),
+      '->',
+      field('body', $._expr),
+    ),
 
-    parenthesized_expression: ($) => seq("(", $._expression, ")"),
+    // when <expr> is [|] <branch>+
+    expr_when: $ => prec.left(seq(
+      'when',
+      field('subject', $._expr),
+      'is',
+      field('branches', repeat1($.when_branch)),
+    )),
 
-    list_expression: ($) =>
-      seq(
-        "[",
-        optional(seq($._expression, repeat(seq(",", $._expression)))),
-        "]",
-      ),
+    when_branch: $ => seq(
+      '|',
+      field('pattern', $.pattern),
+      optional(seq('and', field('guard', $._expr))),
+      '->',
+      field('body', $._expr),
+    ),
 
-    unit: ($) => seq("(", ")"),
+    // [Module.]fn(args)
+    expr_call: $ => prec(10, seq(
+      field('callee', choice(
+        seq(field('module', $.upper_ident), '.', field('name', $.lower_ident)),
+        $.lower_ident,
+        seq('(', $._expr, ')'),
+      )),
+      '(',
+      field('args', commaSep($._expr)),
+      ')',
+    )),
 
-    number: ($) => /\d+/,
+    // binary operators (including cons ::)
+    expr_binop: $ => choice(
+      prec.right(2,  seq($._expr, '::', $._expr)),   // cons
+      prec.left(3,  seq($._expr, '&&', $._expr)),
+      prec.left(3,  seq($._expr, '||', $._expr)),
+      prec.left(4,  seq($._expr, choice('>=', '<=', '>', '<', '==', '!='), $._expr)),
+      prec.left(5,  seq($._expr, choice('+', '-'), $._expr)),
+      prec.left(6,  seq($._expr, choice('*', '/'), $._expr)),
+    ),
 
-    string: ($) => /"([^"\\]|\\.)*"/,
+    // pipe operator |>
+    expr_pipe: $ => prec.left(1, seq(
+      field('left', $._expr),
+      '|>',
+      field('right', $._expr),
+    )),
 
-    identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*!?/,
+    _expr_atom: $ => choice(
+      $.expr_tuple,
+      $.expr_list,
+      $.literal_char,
+      $.literal_string,
+      $.literal_float,
+      $.literal_int,
+      $.lower_ident,
+      $.upper_ident,
+      seq('(', $._expr, ')'),
+    ),
 
-    comment: ($) =>
-      token(
-        choice(seq("//", /.*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/")),
-      ),
+    // tuple: { a, b, c }
+    expr_tuple: $ => seq(
+      '{',
+      commaSep1($._expr),
+      '}',
+    ),
+
+    // list: [ a, b, c ]
+    expr_list: $ => seq(
+      '[',
+      commaSep($._expr),
+      ']',
+    ),
+
+    // -------------------------------------------------------------------------
+    // Patterns
+    // -------------------------------------------------------------------------
+
+    pattern: $ => choice(
+      $.patt_wildcard,
+      $.patt_cons,
+      $.patt_tuple,
+      $.patt_list,
+      $.patt_constructor,
+      $.literal_char,
+      $.literal_string,
+      $.literal_float,
+      $.literal_int,
+      $.lower_ident,
+      $.upper_ident,
+    ),
+
+    patt_wildcard: $ => '_',
+
+    // cons pattern: a :: b
+    patt_cons: $ => prec.right(2, seq(
+      field('head', $.pattern),
+      '::',
+      field('tail', $.pattern),
+    )),
+
+    // tuple pattern: { a, b }
+    patt_tuple: $ => seq(
+      '{',
+      commaSep1($.pattern),
+      '}',
+    ),
+
+    // list pattern: [ a, b ]
+    patt_list: $ => seq(
+      '[',
+      commaSep($.pattern),
+      ']',
+    ),
+
+    // constructor pattern: Foo or Foo(a, b)
+    patt_constructor: $ => prec(1, seq(
+      field('name', $.upper_ident),
+      optional(seq(
+        '(',
+        commaSep1($.pattern),
+        ')',
+      )),
+    )),
+
+    // -------------------------------------------------------------------------
+    // Literals
+    // -------------------------------------------------------------------------
+
+    literal_char: $ => seq("'", /[^']/, "'"),
+
+    literal_string: $ => seq('"', /[^"]*/, '"'),
+
+    // float: .5 or 1.5
+    literal_float: $ => choice(
+      /\d+\.\d*/,
+      /\.\d+/,
+    ),
+
+    literal_int: $ => /\d+/,
+
+    // -------------------------------------------------------------------------
+    // Identifiers
+    // -------------------------------------------------------------------------
+
+    lower_ident: $ => /[a-z_][a-zA-Z0-9_]*/,
+
+    upper_ident: $ => /[A-Z][a-zA-Z0-9_]*/,
+
+    // -------------------------------------------------------------------------
+    // Comments (adjust to your syntax)
+    // -------------------------------------------------------------------------
+
+    comment: $ => token(seq('#', /.*/)),
+
   },
 });
+
+// helpers
+function commaSep(rule) {
+  return optional(commaSep1(rule));
+}
+
+function commaSep1(rule) {
+  return seq(rule, repeat(seq(',', rule)));
+}

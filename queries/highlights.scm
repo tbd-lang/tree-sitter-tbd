@@ -1,46 +1,74 @@
 ; Keywords
-"function" @keyword.function
-"let" @keyword
-"in" @keyword
-"if" @keyword.conditional
-"else" @keyword.conditional
+[
+  "fun"
+  "let"
+  "let!"
+  "let?"
+  "in"
+  "when"
+  "is"
+  "then"
+  "and"
+  "pub"
+] @keyword
 
 ; Operators
-"::" @operator
-(comparison_op) @operator
-(additive_op) @operator
-(multiplicative_op) @operator
-"=" @operator
+[
+  "->"
+  "|>"
+  "="
+  "::"
+  "&&"
+  "||"
+  ">="
+  "<="
+  ">"
+  "<"
+  "=="
+  "!="
+  "+"
+  "-"
+  "*"
+  "/"
+] @operator
 
 ; Punctuation
-"(" @punctuation.bracket
-")" @punctuation.bracket
-"[" @punctuation.bracket
-"]" @punctuation.bracket
-"," @punctuation.delimiter
-";" @punctuation.delimiter
-":" @punctuation.delimiter
+[ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
+[ "," "." "|" ]             @punctuation.delimiter
+
+; Function definition name
+(fun_def name: (lower_ident) @function)
+
+; Local function name
+(expr_fun name: (lower_ident) @function)
+
+; Call sites
+(expr_call
+  callee: (lower_ident) @function.call)
+
+(expr_call
+  module: (upper_ident) @module
+  name:   (lower_ident) @function.call)
+
+; Lambda
+(expr_lambda "->" @operator)
+
+; Constructors / modules
+(upper_ident) @type.enum.variant
+
+(patt_constructor name: (upper_ident) @type.enum.variant)
+
+; Variables / identifiers
+(lower_ident) @variable
 
 ; Literals
-(integer) @number
-(float) @number.float
-(string) @string
-(unit) @constant.builtin
+(literal_string) @string
+(literal_char)   @character
+(literal_int)    @number
+(literal_float)  @number.float
 
-; Function definitions
-(function_def name: (identifier) @function)
-
-; Function calls
-(application_expr func: (identifier) @function.call)
-
-; Parameters
-(param_list (identifier) @variable.parameter)
-
-; Let bindings
-(let_expr name: (identifier) @variable)
-
-; General identifiers
-(identifier) @variable
+; Wildcard
+(patt_wildcard) @variable.builtin
 
 ; Comments
-(comment) @comment
+(comment) @comment @spell
