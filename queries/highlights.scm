@@ -16,6 +16,8 @@
   "then"
 ] @keyword
 
+"import" @keyword.import
+"extern" @keyword.function
 "fun" @keyword.function
 
 [
@@ -55,6 +57,8 @@
 (upper_ident) @constructor
 
 ; Definitions
+(import_declaration module: (upper_ident) @module)
+(extern_definition name: (lower_ident) @function)
 (function_definition name: (lower_ident) @function)
 (let_function_expression name: (lower_ident) @function)
 

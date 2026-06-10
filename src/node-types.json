@@ -557,6 +557,42 @@
     }
   },
   {
+    "type": "extern_definition",
+    "named": true,
+    "fields": {
+      "erlang": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "lower_ident",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parameters",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "function_definition",
     "named": true,
     "fields": {
@@ -650,6 +686,36 @@
         "types": [
           {
             "type": "parameters",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "import_declaration",
+    "named": true,
+    "fields": {
+      "module": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
+      "path": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "lower_ident",
             "named": true
           }
         ]
@@ -2083,7 +2149,15 @@
       "required": false,
       "types": [
         {
+          "type": "extern_definition",
+          "named": true
+        },
+        {
           "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "import_declaration",
           "named": true
         }
       ]
@@ -2183,11 +2257,19 @@
     "extra": true
   },
   {
+    "type": "extern",
+    "named": false
+  },
+  {
     "type": "float",
     "named": true
   },
   {
     "type": "fun",
+    "named": false
+  },
+  {
+    "type": "import",
     "named": false
   },
   {

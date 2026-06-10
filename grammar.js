@@ -24,9 +24,33 @@ module.exports = grammar({
     extras: ($) => [/\s/, $.comment],
 
     rules: {
-        source_file: ($) => repeat($.function_definition),
+        source_file: ($) =>
+            repeat(
+                choice(
+                    $.import_declaration,
+                    $.extern_definition,
+                    $.function_definition,
+                ),
+            ),
 
         // ---- top level ----
+        import_declaration: ($) =>
+            seq(
+                "import",
+                field("path", repeat(seq($.lower_ident, "."))),
+                field("module", $.upper_ident),
+            ),
+
+        extern_definition: ($) =>
+            seq(
+                optional("pub"),
+                "extern",
+                field("name", $.lower_ident),
+                field("parameters", $.parameters),
+                "=",
+                field("erlang", $.string),
+            ),
+
         function_definition: ($) =>
             seq(
                 optional("pub"),
