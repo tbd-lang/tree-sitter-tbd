@@ -82,6 +82,7 @@ module.exports = grammar({
                 $.record_expression,
                 $.list_expression,
                 $.qualified_identifier,
+                $.boolean,
                 $.lower_ident,
                 $.upper_ident,
                 $.integer,
@@ -222,6 +223,7 @@ module.exports = grammar({
                 $.record_pattern,
                 $.list_pattern,
                 $.parenthesized_pattern,
+                $.boolean,
                 $.lower_ident,
                 $.integer,
                 $.float,
@@ -229,7 +231,7 @@ module.exports = grammar({
                 $.string,
             ),
 
-        wildcard_pattern: ($) => "_",
+        wildcard_pattern: (_) => "_",
 
         cons_pattern: ($) =>
             prec.right(
@@ -250,15 +252,16 @@ module.exports = grammar({
         parenthesized_pattern: ($) => seq("(", $._pattern, ")"),
 
         // ---- terminals ----
-        lower_ident: ($) => /[a-z][a-zA-Z0-9_]*/,
-        upper_ident: ($) => /[A-Z][a-zA-Z0-9_]*/,
-        integer: ($) => /\d+/,
-        float: ($) => /\d+\.\d+|\.\d+/,
-        char: ($) => /'(\\.|[^'\\])'/,
-        string: ($) => /"(\\.|[^"\\])*"/,
+        boolean: (_) => choice("true", "false"),
+        lower_ident: (_) => /[a-z][a-zA-Z0-9_]*/,
+        upper_ident: (_) => /[A-Z][a-zA-Z0-9_]*/,
+        integer: (_) => /\d+/,
+        float: (_) => /\d+\.\d+|\.\d+/,
+        char: (_) => /'(\\.|[^'\\])'/,
+        string: (_) => /"(\\.|[^"\\])*"/,
 
         // line comment: # ... to end of line
-        comment: ($) => token(/#[^\n]*/),
+        comment: (_) => token(/#[^\n]*/),
     },
 });
 

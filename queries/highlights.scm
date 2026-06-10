@@ -6,6 +6,7 @@
 (char) @character
 (integer) @number
 (float) @number.float
+(boolean) @boolean
 
 ; Keywords
 [
