@@ -22,9 +22,9 @@
 "fun" @keyword.function
 
 [
+  "match"
+  "with"
   "when"
-  "is"
-  "and"
 ] @keyword.conditional
 
 "pub" @keyword.modifier

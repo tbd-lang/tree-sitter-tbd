@@ -133,9 +133,9 @@ module.exports = grammar({
             prec.right(
                 PREC.bind,
                 seq(
-                    "when",
+                    "match",
                     field("value", $._expression),
-                    "is",
+                    "with",
                     optional("|"),
                     sep1("|", $.match_arm),
                 ),
@@ -145,7 +145,7 @@ module.exports = grammar({
             prec.right(
                 seq(
                     field("pattern", $._pattern),
-                    optional(seq("and", field("guard", $._expression))),
+                    optional(seq("when", field("guard", $._expression))),
                     "->",
                     field("body", $._expression),
                 ),

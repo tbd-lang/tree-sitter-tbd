@@ -2357,10 +2357,6 @@
     "named": false
   },
   {
-    "type": "and",
-    "named": false
-  },
-  {
     "type": "char",
     "named": true
   },
@@ -2398,10 +2394,6 @@
     "named": true
   },
   {
-    "type": "is",
-    "named": false
-  },
-  {
     "type": "let",
     "named": false
   },
@@ -2416,6 +2408,10 @@
   {
     "type": "lower_ident",
     "named": true
+  },
+  {
+    "type": "match",
+    "named": false
   },
   {
     "type": "pub",
@@ -2444,6 +2440,10 @@
   {
     "type": "wildcard_pattern",
     "named": true
+  },
+  {
+    "type": "with",
+    "named": false
   },
   {
     "type": "{",

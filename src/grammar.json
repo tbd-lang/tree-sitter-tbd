@@ -446,7 +446,7 @@
         "members": [
           {
             "type": "STRING",
-            "value": "when"
+            "value": "match"
           },
           {
             "type": "FIELD",
@@ -458,7 +458,7 @@
           },
           {
             "type": "STRING",
-            "value": "is"
+            "value": "with"
           },
           {
             "type": "CHOICE",
@@ -522,7 +522,7 @@
                 "members": [
                   {
                     "type": "STRING",
-                    "value": "and"
+                    "value": "when"
                   },
                   {
                     "type": "FIELD",
