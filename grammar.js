@@ -261,7 +261,7 @@ module.exports = grammar({
         string: (_) => /"(\\.|[^"\\])*"/,
 
         // line comment: # ... to end of line
-        comment: (_) => token(/#[^\n]*/),
+        comment: (_) => token(/\-\-[^\n]*/),
     },
 });
 

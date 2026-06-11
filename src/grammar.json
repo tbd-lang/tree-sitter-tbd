@@ -1378,7 +1378,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "#[^\\n]*"
+        "value": "\\-\\-[^\\n]*"
       }
     }
   },
