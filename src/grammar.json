@@ -68,7 +68,7 @@
           "members": [
             {
               "type": "STRING",
-              "value": "pub"
+              "value": "public"
             },
             {
               "type": "BLANK"
@@ -77,7 +77,7 @@
         },
         {
           "type": "STRING",
-          "value": "extern"
+          "value": "external"
         },
         {
           "type": "FIELD",
@@ -117,7 +117,7 @@
           "members": [
             {
               "type": "STRING",
-              "value": "pub"
+              "value": "public"
             },
             {
               "type": "BLANK"
@@ -126,7 +126,7 @@
         },
         {
           "type": "STRING",
-          "value": "fun"
+          "value": "function"
         },
         {
           "type": "FIELD",
@@ -360,7 +360,7 @@
         "members": [
           {
             "type": "STRING",
-            "value": "fun"
+            "value": "function"
           },
           {
             "type": "FIELD",

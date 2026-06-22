@@ -18,7 +18,8 @@
 ] @keyword
 
 "import" @keyword.import
-"extern" @keyword.function
+"external" @keyword.function
+"function" @keyword.function
 "fun" @keyword.function
 
 [
@@ -27,7 +28,7 @@
   "when"
 ] @keyword.conditional
 
-"pub" @keyword.modifier
+"public" @keyword.modifier
 
 ; Operators
 [

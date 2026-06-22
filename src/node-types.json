@@ -2366,7 +2366,7 @@
     "extra": true
   },
   {
-    "type": "extern",
+    "type": "external",
     "named": false
   },
   {
@@ -2379,6 +2379,10 @@
   },
   {
     "type": "fun",
+    "named": false
+  },
+  {
+    "type": "function",
     "named": false
   },
   {
@@ -2414,7 +2418,7 @@
     "named": false
   },
   {
-    "type": "pub",
+    "type": "public",
     "named": false
   },
   {

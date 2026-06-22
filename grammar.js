@@ -43,8 +43,8 @@ module.exports = grammar({
 
         extern_definition: ($) =>
             seq(
-                optional("pub"),
-                "extern",
+                optional("public"),
+                "external",
                 field("name", $.lower_ident),
                 field("parameters", $.parameters),
                 "=",
@@ -53,8 +53,8 @@ module.exports = grammar({
 
         function_definition: ($) =>
             seq(
-                optional("pub"),
-                "fun",
+                optional("public"),
+                "function",
                 field("name", $.lower_ident),
                 field("parameters", $.parameters),
                 "=",
@@ -108,7 +108,7 @@ module.exports = grammar({
             prec.right(
                 PREC.bind,
                 seq(
-                    "fun",
+                    "function",
                     field("name", $.lower_ident),
                     field("parameters", $.parameters),
                     "=",
