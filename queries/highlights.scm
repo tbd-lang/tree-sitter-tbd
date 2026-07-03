@@ -42,19 +42,9 @@
     "if"
     "let"
     "fun"
-    "and"
-    "or"
-    "+"
-    "++"
-    "-"
-    "*"
-    "/"
-    "="
-    "<>"
-    "<"
-    "<="
-    ">"
-    ">=")
+    "import"
+    "external"
+    "test")
   (#set! priority 120))
 
 
