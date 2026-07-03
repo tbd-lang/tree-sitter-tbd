@@ -35,9 +35,11 @@
 (call
   callee: (symbol) @keyword
   (#any-of? @keyword
+    "module"
     "function"
     "public"
     "match"
+    "if"
     "let"
     "fun")
   (#set! priority 120))
