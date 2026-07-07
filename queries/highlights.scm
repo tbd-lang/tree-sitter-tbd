@@ -32,6 +32,22 @@
   (constructor) @constructor
   (module) @module)
 
+(map
+  (symbol) @variable
+  (string) @string
+  (integer) @number
+  (bool) @boolean
+  (constructor) @constructor
+  (module) @module)
+
+(binary
+  (symbol) @variable
+  (string) @string
+  (integer) @number
+  (bool) @boolean
+  (constructor) @constructor
+  (module) @module)
+
 (call
   callee: (symbol) @keyword
   (#any-of? @keyword
@@ -43,8 +59,7 @@
     "let"
     "fun"
     "import"
-    "external"
-    "test")
+    "external")
   (#set! priority 120))
 
 

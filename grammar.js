@@ -15,6 +15,8 @@ module.exports = grammar({
                 $.call,
                 $.list,
                 $.tuple,
+                $.map,
+                $.binary,
                 $.integer,
                 $.string,
                 $.bool,
@@ -35,6 +37,10 @@ module.exports = grammar({
 
         tuple: ($) => seq("{", repeat($._expr), "}"),
 
+        map: ($) => seq("#{", repeat($._expr), "}"),
+
+        binary: ($) => seq("<<", repeat(seq($._expr, "|", $._expr)), ">>"),
+
         integer: (_) => token(/-?(0|[1-9][0-9]*)/),
 
         string: (_) => token(seq('"', repeat(choice(/[^"\\]/, /\\./)), '"')),
@@ -43,7 +49,7 @@ module.exports = grammar({
 
         constructor: (_) => token(/\$[A-Za-z0-9_-]*/),
 
-        module: ($) => seq(token(/[A-Z][A-Za-z0-9_]*\./), $.call),
+        module: ($) => seq(token(/[A-Za-z0-9_]*\:/), $.call),
 
         symbol: (_) =>
             token(/[a-z_+\-*/=<>!?$%&~^:][A-Za-z0-9_+\-*/=<>!?$%&~^:.]*/),

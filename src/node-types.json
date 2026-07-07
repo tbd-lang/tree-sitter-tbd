@@ -1,5 +1,60 @@
 [
   {
+    "type": "binary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "call",
+          "named": true
+        },
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "map",
+          "named": true
+        },
+        {
+          "type": "module",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "bool",
     "named": true,
     "fields": {}
@@ -12,6 +67,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "binary",
+            "named": true
+          },
           {
             "type": "bool",
             "named": true
@@ -30,6 +89,10 @@
           },
           {
             "type": "list",
+            "named": true
+          },
+          {
+            "type": "map",
             "named": true
           },
           {
@@ -55,6 +118,10 @@
         "required": true,
         "types": [
           {
+            "type": "binary",
+            "named": true
+          },
+          {
             "type": "bool",
             "named": true
           },
@@ -72,6 +139,10 @@
           },
           {
             "type": "list",
+            "named": true
+          },
+          {
+            "type": "map",
             "named": true
           },
           {
@@ -103,6 +174,10 @@
       "required": false,
       "types": [
         {
+          "type": "binary",
+          "named": true
+        },
+        {
           "type": "bool",
           "named": true
         },
@@ -120,6 +195,65 @@
         },
         {
           "type": "list",
+          "named": true
+        },
+        {
+          "type": "map",
+          "named": true
+        },
+        {
+          "type": "module",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "map",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "call",
+          "named": true
+        },
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "map",
           "named": true
         },
         {
@@ -166,6 +300,10 @@
       "required": false,
       "types": [
         {
+          "type": "binary",
+          "named": true
+        },
+        {
           "type": "bool",
           "named": true
         },
@@ -183,6 +321,10 @@
         },
         {
           "type": "list",
+          "named": true
+        },
+        {
+          "type": "map",
           "named": true
         },
         {
@@ -213,6 +355,10 @@
       "required": false,
       "types": [
         {
+          "type": "binary",
+          "named": true
+        },
+        {
           "type": "bool",
           "named": true
         },
@@ -230,6 +376,10 @@
         },
         {
           "type": "list",
+          "named": true
+        },
+        {
+          "type": "map",
           "named": true
         },
         {
@@ -252,11 +402,23 @@
     }
   },
   {
+    "type": "#{",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
   {
     "type": ")",
+    "named": false
+  },
+  {
+    "type": "<<",
+    "named": false
+  },
+  {
+    "type": ">>",
     "named": false
   },
   {
@@ -298,6 +460,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {
