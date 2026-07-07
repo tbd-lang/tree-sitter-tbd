@@ -41,7 +41,7 @@ module.exports = grammar({
 
         bool: (_) => choice("true", "false"),
 
-        constructor: (_) => token(/[A-Z][A-Za-z0-9_-]*/),
+        constructor: (_) => token(/\$[A-Za-z0-9_-]*/),
 
         module: ($) => seq(token(/[A-Z][A-Za-z0-9_]*\./), $.call),
 

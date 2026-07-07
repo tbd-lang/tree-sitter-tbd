@@ -295,97 +295,100 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   eof = lexer->eof(lexer);
   switch (state) {
     case 0:
-      if (eof) ADVANCE(3);
+      if (eof) ADVANCE(4);
       ADVANCE_MAP(
         '"', 1,
-        '(', 6,
-        ')', 7,
+        '$', 18,
+        '(', 7,
+        ')', 8,
         '-', 20,
-        '0', 12,
-        '[', 8,
-        ']', 9,
-        '{', 10,
-        '}', 11,
+        '0', 13,
+        '[', 9,
+        ']', 10,
+        '{', 11,
+        '}', 12,
       );
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ') SKIP(0);
-      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(13);
-      if (('A' <= lookahead && lookahead <= 'Z')) ADVANCE(17);
+      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(14);
+      if (('A' <= lookahead && lookahead <= 'Z')) ADVANCE(2);
       if (set_contains(sym_symbol_character_set_1, 10, lookahead)) ADVANCE(21);
       END_STATE();
     case 1:
-      if (lookahead == '"') ADVANCE(16);
-      if (lookahead == '\\') ADVANCE(2);
+      if (lookahead == '"') ADVANCE(17);
+      if (lookahead == '\\') ADVANCE(3);
       if (lookahead != 0) ADVANCE(1);
       END_STATE();
     case 2:
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(1);
-      END_STATE();
-    case 3:
-      ACCEPT_TOKEN(ts_builtin_sym_end);
-      END_STATE();
-    case 4:
-      ACCEPT_TOKEN(sym_comment);
-      if (set_contains(sym_symbol_character_set_2, 9, lookahead)) ADVANCE(4);
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(5);
-      END_STATE();
-    case 5:
-      ACCEPT_TOKEN(sym_comment);
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(5);
-      END_STATE();
-    case 6:
-      ACCEPT_TOKEN(anon_sym_LPAREN);
-      END_STATE();
-    case 7:
-      ACCEPT_TOKEN(anon_sym_RPAREN);
-      END_STATE();
-    case 8:
-      ACCEPT_TOKEN(anon_sym_LBRACK);
-      END_STATE();
-    case 9:
-      ACCEPT_TOKEN(anon_sym_RBRACK);
-      END_STATE();
-    case 10:
-      ACCEPT_TOKEN(anon_sym_LBRACE);
-      END_STATE();
-    case 11:
-      ACCEPT_TOKEN(anon_sym_RBRACE);
-      END_STATE();
-    case 12:
-      ACCEPT_TOKEN(sym_integer);
-      END_STATE();
-    case 13:
-      ACCEPT_TOKEN(sym_integer);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(13);
-      END_STATE();
-    case 14:
-      ACCEPT_TOKEN(sym_integer);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(14);
-      if (set_contains(sym_symbol_character_set_2, 9, lookahead)) ADVANCE(21);
-      END_STATE();
-    case 15:
-      ACCEPT_TOKEN(sym_integer);
-      if (set_contains(sym_symbol_character_set_2, 9, lookahead)) ADVANCE(21);
-      END_STATE();
-    case 16:
-      ACCEPT_TOKEN(sym_string);
-      END_STATE();
-    case 17:
-      ACCEPT_TOKEN(sym_constructor);
-      if (lookahead == '-') ADVANCE(18);
       if (lookahead == '.') ADVANCE(19);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(17);
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(2);
+      END_STATE();
+    case 3:
+      if (lookahead != 0 &&
+          lookahead != '\n') ADVANCE(1);
+      END_STATE();
+    case 4:
+      ACCEPT_TOKEN(ts_builtin_sym_end);
+      END_STATE();
+    case 5:
+      ACCEPT_TOKEN(sym_comment);
+      if (set_contains(sym_symbol_character_set_2, 9, lookahead)) ADVANCE(5);
+      if (lookahead != 0 &&
+          lookahead != '\n') ADVANCE(6);
+      END_STATE();
+    case 6:
+      ACCEPT_TOKEN(sym_comment);
+      if (lookahead != 0 &&
+          lookahead != '\n') ADVANCE(6);
+      END_STATE();
+    case 7:
+      ACCEPT_TOKEN(anon_sym_LPAREN);
+      END_STATE();
+    case 8:
+      ACCEPT_TOKEN(anon_sym_RPAREN);
+      END_STATE();
+    case 9:
+      ACCEPT_TOKEN(anon_sym_LBRACK);
+      END_STATE();
+    case 10:
+      ACCEPT_TOKEN(anon_sym_RBRACK);
+      END_STATE();
+    case 11:
+      ACCEPT_TOKEN(anon_sym_LBRACE);
+      END_STATE();
+    case 12:
+      ACCEPT_TOKEN(anon_sym_RBRACE);
+      END_STATE();
+    case 13:
+      ACCEPT_TOKEN(sym_integer);
+      END_STATE();
+    case 14:
+      ACCEPT_TOKEN(sym_integer);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(14);
+      END_STATE();
+    case 15:
+      ACCEPT_TOKEN(sym_integer);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(15);
+      if (set_contains(sym_symbol_character_set_2, 9, lookahead)) ADVANCE(21);
+      END_STATE();
+    case 16:
+      ACCEPT_TOKEN(sym_integer);
+      if (set_contains(sym_symbol_character_set_2, 9, lookahead)) ADVANCE(21);
+      END_STATE();
+    case 17:
+      ACCEPT_TOKEN(sym_string);
       END_STATE();
     case 18:
       ACCEPT_TOKEN(sym_constructor);
-      if (lookahead == '-' ||
-          ('0' <= lookahead && lookahead <= '9') ||
+      if ((set_contains(sym_symbol_character_set_1, 10, lookahead) ||
+          lookahead == '.') &&
+          lookahead != '-' &&
+          lookahead != '_' &&
+          (lookahead < 'a' || 'z' < lookahead)) ADVANCE(21);
+      if (('-' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
           ('a' <= lookahead && lookahead <= 'z')) ADVANCE(18);
@@ -395,9 +398,9 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 20:
       ACCEPT_TOKEN(sym_symbol);
-      if (lookahead == '-') ADVANCE(4);
-      if (lookahead == '0') ADVANCE(15);
-      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(14);
+      if (lookahead == '-') ADVANCE(5);
+      if (lookahead == '0') ADVANCE(16);
+      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(15);
       if (set_contains(sym_symbol_character_set_2, 9, lookahead)) ADVANCE(21);
       END_STATE();
     case 21:
