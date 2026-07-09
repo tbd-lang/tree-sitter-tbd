@@ -50,7 +50,7 @@
   (#set! priority 140))
 
 (assign
-  "let" @keyword)
+  kind: (let_keyword) @keyword)
 
 (cond
   "if" @keyword)

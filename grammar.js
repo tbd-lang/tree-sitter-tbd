@@ -78,7 +78,9 @@ module.exports = grammar({
                 $.string,
                 $.ident,
             ),
-        assign: ($) => seq("(", "let", $.patt, $.expr, ")"),
+        assign: ($) =>
+            seq("(", field("kind", $.let_keyword), $.patt, $.expr, ")"),
+        let_keyword: (_) => token(choice("let", "let!", "let?")),
 
         cond: ($) => seq("(", "if", $.expr, $.expr, $.expr, ")"),
 
@@ -156,6 +158,6 @@ module.exports = grammar({
                     ),
                 ),
             ),
-        ident: (_) => token(/[a-z]+[A-Za-z0-9_\-]*/),
+        ident: (_) => token(/[a-z_]+[A-Za-z0-9_\-]*/),
     },
 });

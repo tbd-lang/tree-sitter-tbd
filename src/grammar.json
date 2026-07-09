@@ -333,8 +333,12 @@
           "value": "("
         },
         {
-          "type": "STRING",
-          "value": "let"
+          "type": "FIELD",
+          "name": "kind",
+          "content": {
+            "type": "SYMBOL",
+            "name": "let_keyword"
+          }
         },
         {
           "type": "SYMBOL",
@@ -349,6 +353,26 @@
           "value": ")"
         }
       ]
+    },
+    "let_keyword": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "let"
+          },
+          {
+            "type": "STRING",
+            "value": "let!"
+          },
+          {
+            "type": "STRING",
+            "value": "let?"
+          }
+        ]
+      }
     },
     "cond": {
       "type": "SEQ",
@@ -901,7 +925,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "[a-z]+[A-Za-z0-9_\\-]*"
+        "value": "[a-z_]+[A-Za-z0-9_\\-]*"
       }
     }
   },

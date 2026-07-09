@@ -2,7 +2,18 @@
   {
     "type": "assign",
     "named": true,
-    "fields": {},
+    "fields": {
+      "kind": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "let_keyword",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -613,8 +624,8 @@
     "named": false
   },
   {
-    "type": "let",
-    "named": false
+    "type": "let_keyword",
+    "named": true
   },
   {
     "type": "match",
