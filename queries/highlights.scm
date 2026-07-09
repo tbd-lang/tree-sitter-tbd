@@ -2,78 +2,89 @@
 
 (string) @string
 
-(integer) @number
+(numeric) @number
 
-(bool) @boolean
+(boolean) @boolean
 
-(constructor) @constructor
+(variant
+  ":" @punctuation.special
+  name: (ident) @constructor
+  (#set! priority 130))
 
-(module) @module
+(module_access
+  module: (ident) @module
+  (#set! priority 140))
+
+(module_access
+  function: (ident) @function.call
+  (#set! priority 130))
+
+(op) @operator
+
+(function
+  "function" @keyword
+  name: (ident) @function
+  (#set! priority 130))
+
+(external
+  "external" @keyword
+  name: (ident) @function
+  (#set! priority 130))
+
+(function
+  parameter: (patt (ident) @variable.parameter)
+  (#set! priority 130))
+
+(external
+  parameter: (patt (ident) @variable.parameter)
+  (#set! priority 130))
+
+(import
+  "import" @keyword)
+
+(import_path
+  path: (ident) @module)
+
+(import_path
+  module: (ident) @module
+  (#set! priority 140))
+
+(assign
+  "let" @keyword)
+
+(cond
+  "if" @keyword)
+
+(match
+  "match" @keyword)
+
+(lambda
+  "fun" @keyword)
 
 (call
-  callee: (symbol) @function.call)
+  callee: (expr (ident) @function.call)
+  (#set! priority 130))
 
 (call
-  argument: (symbol) @variable)
-
-(list
-  (symbol) @variable
-  (string) @string
-  (integer) @number
-  (bool) @boolean
-  (constructor) @constructor
-  (module) @module)
-
-(tuple
-  (symbol) @variable
-  (string) @string
-  (integer) @number
-  (bool) @boolean
-  (constructor) @constructor
-  (module) @module)
-
-(map
-  (symbol) @variable
-  (string) @string
-  (integer) @number
-  (bool) @boolean
-  (constructor) @constructor
-  (module) @module)
-
-(binary
-  (symbol) @variable
-  (string) @string
-  (integer) @number
-  (bool) @boolean
-  (constructor) @constructor
-  (module) @module)
-
-(call
-  callee: (symbol) @keyword
-  (#any-of? @keyword
-    "module"
-    "function"
-    "public"
-    "match"
-    "if"
-    "let"
-    "fun"
-    "import"
-    "external")
-  (#set! priority 120))
-
+  callee: (expr (module_access) @function.call)
+  (#set! priority 130))
 
 [
   "("
   ")"
-] @punctuation.paren
-
-[
   "["
   "]"
+  "{"
+  "}"
+  "#{"
+  "<<"
+  ">>"
 ] @punctuation.bracket
 
 [
-  "{"
-  "}"
-] @punctuation.brace
+  "|"
+] @punctuation.delimiter
+
+":" @punctuation.delimiter
+
+(ident) @variable
