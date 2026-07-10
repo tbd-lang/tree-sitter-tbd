@@ -1,6 +1,3 @@
-(import stdlib/io)
-
-
 (function (main)
-  (let p (:point 1 2 3))
-  (io:printfln "~p" p))
+  (let x #{ :key value :key value })
+  (io:format "" x))

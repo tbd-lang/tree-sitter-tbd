@@ -102,7 +102,12 @@ module.exports = grammar({
 
         tuple: ($) => seq("{", repeat($.expr), "}"),
 
-        map: ($) => seq(token("#{"), repeat(seq($.expr, $.expr)), "}"),
+        map: ($) =>
+            seq(
+                token("#{"),
+                repeat(seq(field("key", $.expr), field("value", $.expr))),
+                "}",
+            ),
 
         binary: ($) =>
             seq(
@@ -141,7 +146,8 @@ module.exports = grammar({
                 2,
                 seq(
                     field("path", repeat(seq($.ident, "/"))),
-                    field("module", seq($.ident, ":")),
+                    field("module", $.ident),
+                    token.immediate(":"),
                     field("function", $.ident),
                 ),
             ),
