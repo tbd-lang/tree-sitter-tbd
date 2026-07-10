@@ -273,6 +273,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "receive"
+        },
+        {
+          "type": "SYMBOL",
           "name": "call"
         },
         {
@@ -417,6 +421,30 @@
         {
           "type": "SYMBOL",
           "name": "expr"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "match_branch"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "receive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "STRING",
+          "value": "receive"
         },
         {
           "type": "REPEAT1",

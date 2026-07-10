@@ -154,6 +154,10 @@
           "named": true
         },
         {
+          "type": "receive",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -483,6 +487,21 @@
     }
   },
   {
+    "type": "receive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "match_branch",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -645,6 +664,10 @@
   {
     "type": "op",
     "named": true
+  },
+  {
+    "type": "receive",
+    "named": false
   },
   {
     "type": "string",

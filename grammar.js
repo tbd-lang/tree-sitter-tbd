@@ -64,6 +64,7 @@ module.exports = grammar({
                 $.assign,
                 $.cond,
                 $.match,
+                $.receive,
                 $.call,
                 $.list,
                 $.tuple,
@@ -85,6 +86,7 @@ module.exports = grammar({
         cond: ($) => seq("(", "if", $.expr, $.expr, $.expr, ")"),
 
         match: ($) => seq("(", "match", $.expr, repeat1($.match_branch), ")"),
+        receive: ($) => seq("(", "receive", repeat1($.match_branch), ")"),
         match_branch: ($) => seq("(", $.patt, repeat1($.expr), ")"),
 
         call: ($) =>

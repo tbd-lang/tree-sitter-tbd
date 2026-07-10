@@ -58,6 +58,9 @@
 (match
   "match" @keyword)
 
+(receive
+  "receive" @keyword)
+
 (lambda
   "fun" @keyword)
 
