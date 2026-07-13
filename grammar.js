@@ -156,7 +156,7 @@ module.exports = grammar({
                     field("function", $.ident),
                 ),
             ),
-        variant: ($) => seq(":", field("name", $.ident)),
+        variant: (_) => token(seq(":", /[a-z_]+[A-Za-z0-9_\-]*/)),
         string: (_) => token(seq('"', repeat(choice(/[^"\\]/, /\\./)), '"')),
         escape: (_) =>
             token.immediate(

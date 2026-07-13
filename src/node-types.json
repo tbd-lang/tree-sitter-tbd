@@ -570,22 +570,6 @@
     }
   },
   {
-    "type": "variant",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "ident",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "#{",
     "named": false
   },
@@ -603,10 +587,6 @@
   },
   {
     "type": "/",
-    "named": false
-  },
-  {
-    "type": ":",
     "named": false
   },
   {
@@ -687,6 +667,10 @@
   },
   {
     "type": "unit",
+    "named": true
+  },
+  {
+    "type": "variant",
     "named": true
   },
   {

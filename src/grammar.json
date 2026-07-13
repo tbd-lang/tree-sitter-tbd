@@ -921,21 +921,20 @@
       }
     },
     "variant": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "ident"
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": ":"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[a-z_]+[A-Za-z0-9_\\-]*"
           }
-        }
-      ]
+        ]
+      }
     },
     "string": {
       "type": "TOKEN",

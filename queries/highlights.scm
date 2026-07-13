@@ -8,9 +8,7 @@
 
 (boolean) @boolean
 
-(variant
-  ":" @punctuation.special
-  name: (ident) @constructor
+((variant) @constructor
   (#set! priority 130))
 
 (module_access
@@ -91,7 +89,5 @@
 [
   "|"
 ] @punctuation.delimiter
-
-":" @punctuation.delimiter
 
 (ident) @variable
