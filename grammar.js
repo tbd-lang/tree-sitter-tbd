@@ -1,3 +1,5 @@
+const IDENT = /[a-z_][A-Za-z0-9_-]*/;
+
 module.exports = grammar({
     name: "tbd",
 
@@ -12,11 +14,7 @@ module.exports = grammar({
         stmt: ($) => choice($.import, $.external, $.function),
 
         import: ($) => seq("(", "import", repeat1($.import_path), ")"),
-        import_path: ($) =>
-            seq(
-                field("path", repeat(seq($.ident, "/"))),
-                field("module", $.ident),
-            ),
+        import_path: (_) => token(seq(IDENT, repeat(seq("/", IDENT)))),
 
         external: ($) =>
             seq(
@@ -156,7 +154,7 @@ module.exports = grammar({
                     field("function", $.ident),
                 ),
             ),
-        variant: (_) => token(seq(":", /[a-z_]+[A-Za-z0-9_\-]*/)),
+        variant: (_) => token(seq(":", IDENT)),
         string: (_) => token(seq('"', repeat(choice(/[^"\\]/, /\\./)), '"')),
         escape: (_) =>
             token.immediate(
@@ -169,6 +167,6 @@ module.exports = grammar({
                     ),
                 ),
             ),
-        ident: (_) => token(/[a-z_]+[A-Za-z0-9_\-]*/),
+        ident: (_) => token(IDENT),
     },
 });

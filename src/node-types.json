@@ -274,36 +274,6 @@
     }
   },
   {
-    "type": "import_path",
-    "named": true,
-    "fields": {
-      "module": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "ident",
-            "named": true
-          }
-        ]
-      },
-      "path": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "/",
-            "named": false
-          },
-          {
-            "type": "ident",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "lambda",
     "named": true,
     "fields": {},
@@ -640,6 +610,10 @@
   {
     "type": "import",
     "named": false
+  },
+  {
+    "type": "import_path",
+    "named": true
   },
   {
     "type": "let_keyword",

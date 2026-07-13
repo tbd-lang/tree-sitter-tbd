@@ -89,37 +89,32 @@
       ]
     },
     "import_path": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "path",
-          "content": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[a-z_][A-Za-z0-9_-]*"
+          },
+          {
             "type": "REPEAT",
             "content": {
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "ident"
-                },
-                {
                   "type": "STRING",
                   "value": "/"
+                },
+                {
+                  "type": "PATTERN",
+                  "value": "[a-z_][A-Za-z0-9_-]*"
                 }
               ]
             }
           }
-        },
-        {
-          "type": "FIELD",
-          "name": "module",
-          "content": {
-            "type": "SYMBOL",
-            "name": "ident"
-          }
-        }
-      ]
+        ]
+      }
     },
     "external": {
       "type": "SEQ",
@@ -931,7 +926,7 @@
           },
           {
             "type": "PATTERN",
-            "value": "[a-z_]+[A-Za-z0-9_\\-]*"
+            "value": "[a-z_][A-Za-z0-9_-]*"
           }
         ]
       }
@@ -1019,7 +1014,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "[a-z_]+[A-Za-z0-9_\\-]*"
+        "value": "[a-z_][A-Za-z0-9_-]*"
       }
     }
   },
