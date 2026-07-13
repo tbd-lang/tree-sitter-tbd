@@ -2,6 +2,8 @@
 
 (string) @string
 
+(char) @character
+
 (numeric) @number
 
 (boolean) @boolean
@@ -13,10 +15,12 @@
 
 (module_access
   module: (ident) @module
+  "." @punctuation.delimiter
   (#set! priority 140))
 
+
 (module_access
-  function: (ident) @function.call
+  function: (ident) @function
   (#set! priority 130))
 
 (op) @operator
@@ -65,11 +69,11 @@
   "fun" @keyword)
 
 (call
-  callee: (expr (ident) @function.call)
+  callee: (expr (ident) @function)
   (#set! priority 130))
 
 (call
-  callee: (expr (module_access) @function.call)
+  callee: (expr (module_access) @function)
   (#set! priority 130))
 
 [

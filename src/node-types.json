@@ -120,6 +120,10 @@
           "named": true
         },
         {
+          "type": "char",
+          "named": true
+        },
+        {
           "type": "cond",
           "named": true
         },
@@ -458,6 +462,10 @@
           "named": true
         },
         {
+          "type": "char",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
@@ -562,11 +570,6 @@
     }
   },
   {
-    "type": "unit",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "variant",
     "named": true,
     "fields": {
@@ -631,6 +634,10 @@
     "named": true
   },
   {
+    "type": "char",
+    "named": true
+  },
+  {
     "type": "external",
     "named": false
   },
@@ -676,6 +683,10 @@
   },
   {
     "type": "string",
+    "named": true
+  },
+  {
+    "type": "unit",
     "named": true
   },
   {

@@ -51,6 +51,7 @@ module.exports = grammar({
                 $.binary,
                 $.unit,
                 $.boolean,
+                $.char,
                 $.numeric,
                 $.variant,
                 $.string,
@@ -73,6 +74,7 @@ module.exports = grammar({
                 $.op,
                 $.unit,
                 $.boolean,
+                $.char,
                 $.numeric,
                 $.module_access,
                 $.variant,
@@ -140,7 +142,8 @@ module.exports = grammar({
                 ),
             ),
 
-        unit: (_) => seq("(", ")"),
+        unit: (_) => token(seq("(", ")")),
+        char: (_) => token(seq("'", choice(/[^'\\\n]/, /\\[nrt0'\\]/), "'")),
         boolean: (_) => token(choice("true", "false")),
         numeric: (_) => token(/([0-9]+(\.[0-9]+)?|\.[0-9]+)([eE][+-]?[0-9]+)?/),
         module_access: ($) =>
