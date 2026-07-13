@@ -45,9 +45,8 @@
   "import" @keyword)
 
 (import_path
-  path: (ident) @module)
-
-(import_path
+  path: (ident) @path
+  "/" @punctuation.delimiter
   module: (ident) @module
   (#set! priority 140))
 
