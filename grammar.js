@@ -7,7 +7,7 @@ module.exports = grammar({
     rules: {
         source_file: ($) => repeat($.stmt),
 
-        comment: (_) => token(seq("--", /.*/)),
+        comment: (_) => choice(token(seq("--", /.*/)), token(seq("#!", /.*/))),
 
         stmt: ($) => choice($.import, $.external, $.function),
 
@@ -149,7 +149,7 @@ module.exports = grammar({
                 seq(
                     field("path", repeat(seq($.ident, "/"))),
                     field("module", $.ident),
-                    token.immediate(":"),
+                    token.immediate("."),
                     field("function", $.ident),
                 ),
             ),

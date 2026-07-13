@@ -75,6 +75,12 @@
     }
   },
   {
+    "type": "comment",
+    "named": true,
+    "extra": true,
+    "fields": {}
+  },
+  {
     "type": "cond",
     "named": true,
     "fields": {},
@@ -589,6 +595,10 @@
     "named": false
   },
   {
+    "type": ".",
+    "named": false
+  },
+  {
     "type": "/",
     "named": false
   },
@@ -619,11 +629,6 @@
   {
     "type": "boolean",
     "named": true
-  },
-  {
-    "type": "comment",
-    "named": true,
-    "extra": true
   },
   {
     "type": "external",

@@ -11,20 +11,41 @@
       }
     },
     "comment": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "--"
-          },
-          {
-            "type": "PATTERN",
-            "value": ".*"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "--"
+              },
+              {
+                "type": "PATTERN",
+                "value": ".*"
+              }
+            ]
           }
-        ]
-      }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "#!"
+              },
+              {
+                "type": "PATTERN",
+                "value": ".*"
+              }
+            ]
+          }
+        }
+      ]
     },
     "stmt": {
       "type": "CHOICE",
@@ -845,7 +866,7 @@
             "type": "IMMEDIATE_TOKEN",
             "content": {
               "type": "STRING",
-              "value": ":"
+              "value": "."
             }
           },
           {
