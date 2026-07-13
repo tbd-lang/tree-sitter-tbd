@@ -5,10 +5,11 @@
 (char) @character
 
 (numeric) @number
+(unit) @number
 
 (boolean) @boolean
 
-((variant) @constructor
+((variant) @constant
   (#set! priority 130))
 
 (module_access
@@ -24,50 +25,97 @@
 (op) @operator
 
 (function
+  "(" @keyword
   "function" @keyword
+  ")" @keyword
+  (#set! priority 130))
+
+(function_header
+  "(" @function
   name: (ident) @function
+  ")" @function
+  (#set! priority 130))
+
+(function_header
+  "(" @function
+  name: (ident) @function
+  parameter: (patt (ident) @variable.parameter)
+  ")" @function
   (#set! priority 130))
 
 (external
+  "(" @keyword
   "external" @keyword
+  ")" @keyword
+  (#set! priority 130))
+
+(external_header
+  "(" @function
   name: (ident) @function
-  (#set! priority 130))
-
-(function
-  parameter: (patt (ident) @variable.parameter)
-  (#set! priority 130))
-
-(external
-  parameter: (patt (ident) @variable.parameter)
+  parameter: (ident) @variable.parameter
+  ")" @function
   (#set! priority 130))
 
 (import
-  "import" @keyword)
+  "(" @keyword
+  "import" @keyword
+  ")" @keyword
+ (#set! priority 140))
 
 ((import_path) @module
   (#set! priority 140))
 
 (assign
-  kind: (let_keyword) @keyword)
+  "(" @keyword
+  kind: (let_keyword) @keyword
+  ")" @keyword
+  (#set! priority 130))
 
 (cond
-  "if" @keyword)
+  "(" @keyword
+  "if" @keyword
+  ")" @keyword
+  (#set! priority 130))
 
 (match
-  "match" @keyword)
+  "(" @keyword
+  "match" @keyword
+  ")" @keyword
+  (#set! priority 130))
 
 (receive
-  "receive" @keyword)
+  "(" @keyword
+  "receive" @keyword
+  ")" @keyword
+  (#set! priority 130))
+
+(match_branch
+  "(" @keyword
+  ")" @keyword
+  (#set! priority 130))
 
 (lambda
-  "fun" @keyword)
-
-(call
-  callee: (expr (ident) @function)
+  "(" @keyword
+  "fun" @keyword
+  ")" @keyword
   (#set! priority 130))
 
 (call
-  callee: (expr (module_access) @function)
+  "(" @function
+  callee: (expr) @function
+  ")" @function
+  (#set! priority 130))
+
+(call
+  "(" @constant
+  callee: (expr (variant) @constant)
+  ")" @constant
+  (#set! priority 130))
+
+(call
+  "(" @module
+  callee: (expr (module_access) @module)
+  ")" @module
   (#set! priority 130))
 
 [

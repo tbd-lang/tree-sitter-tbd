@@ -189,6 +189,25 @@
   {
     "type": "external",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "external_header",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "external_header",
+    "named": true,
     "fields": {
       "name": {
         "multiple": false,
@@ -205,25 +224,49 @@
         "required": false,
         "types": [
           {
-            "type": "patt",
+            "type": "ident",
             "named": true
           }
         ]
       }
-    },
+    }
+  },
+  {
+    "type": "function",
+    "named": true,
+    "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "string",
+          "type": "function_body",
+          "named": true
+        },
+        {
+          "type": "function_header",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "function",
+    "type": "function_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_header",
     "named": true,
     "fields": {
       "name": {
@@ -246,16 +289,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -274,6 +307,21 @@
     }
   },
   {
+    "type": "import_path",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "lambda",
     "named": true,
     "fields": {},
@@ -285,6 +333,21 @@
           "type": "expr",
           "named": true
         },
+        {
+          "type": "lambda_header",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "lambda_header",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
         {
           "type": "patt",
           "named": true
@@ -610,10 +673,6 @@
   {
     "type": "import",
     "named": false
-  },
-  {
-    "type": "import_path",
-    "named": true
   },
   {
     "type": "let_keyword",

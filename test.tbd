@@ -1,3 +1,1 @@
-(function (main)
-  (let x #{ :key value :key value })
-  (io:format "" x))
+(function (add a b) (math.add a b))

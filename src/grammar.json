@@ -89,32 +89,29 @@
       ]
     },
     "import_path": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "PATTERN",
-            "value": "[a-z_][A-Za-z0-9_-]*"
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "/"
-                },
-                {
-                  "type": "PATTERN",
-                  "value": "[a-z_][A-Za-z0-9_-]*"
-                }
-              ]
-            }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "ident"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "/"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "ident"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
     },
     "external": {
       "type": "SEQ",
@@ -127,6 +124,23 @@
           "type": "STRING",
           "value": "external"
         },
+        {
+          "type": "SYMBOL",
+          "name": "external_header"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "external_header": {
+      "type": "SEQ",
+      "members": [
         {
           "type": "STRING",
           "value": "("
@@ -146,17 +160,9 @@
             "name": "parameter",
             "content": {
               "type": "SYMBOL",
-              "name": "patt"
+              "name": "ident"
             }
           }
-        },
-        {
-          "type": "STRING",
-          "value": ")"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "string"
         },
         {
           "type": "STRING",
@@ -176,6 +182,23 @@
           "value": "function"
         },
         {
+          "type": "SYMBOL",
+          "name": "function_header"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "function_body"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "function_header": {
+      "type": "SEQ",
+      "members": [
+        {
           "type": "STRING",
           "value": "("
         },
@@ -201,19 +224,15 @@
         {
           "type": "STRING",
           "value": ")"
-        },
-        {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SYMBOL",
-            "name": "expr"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ")"
         }
       ]
+    },
+    "function_body": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "expr"
+      }
     },
     "patt": {
       "type": "CHOICE",
@@ -551,6 +570,26 @@
           "value": "fun"
         },
         {
+          "type": "SYMBOL",
+          "name": "lambda_header"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "lambda_header": {
+      "type": "SEQ",
+      "members": [
+        {
           "type": "STRING",
           "value": "("
         },
@@ -559,17 +598,6 @@
           "content": {
             "type": "SYMBOL",
             "name": "patt"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ")"
-        },
-        {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SYMBOL",
-            "name": "expr"
           }
         },
         {

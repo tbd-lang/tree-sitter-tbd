@@ -1,5 +1,3 @@
-const IDENT = /[a-z_][A-Za-z0-9_-]*/;
-
 module.exports = grammar({
     name: "tbd",
 
@@ -14,31 +12,27 @@ module.exports = grammar({
         stmt: ($) => choice($.import, $.external, $.function),
 
         import: ($) => seq("(", "import", repeat1($.import_path), ")"),
-        import_path: (_) => token(seq(IDENT, repeat(seq("/", IDENT)))),
+        import_path: ($) => seq($.ident, repeat(seq("/", $.ident))),
 
-        external: ($) =>
+        external: ($) => seq("(", "external", $.external_header, $.string, ")"),
+        external_header: ($) =>
             seq(
                 "(",
-                "external",
-                "(",
                 field("name", $.ident),
-                repeat(field("parameter", $.patt)),
-                ")",
-                $.string,
+                repeat(field("parameter", $.ident)),
                 ")",
             ),
 
         function: ($) =>
+            seq("(", "function", $.function_header, $.function_body, ")"),
+        function_header: ($) =>
             seq(
-                "(",
-                "function",
                 "(",
                 field("name", $.ident),
                 repeat(field("parameter", $.patt)),
                 ")",
-                repeat1($.expr),
-                ")",
             ),
+        function_body: ($) => repeat1($.expr),
 
         patt: ($) =>
             choice(
@@ -97,8 +91,8 @@ module.exports = grammar({
                 ")",
             ),
 
-        lambda: ($) =>
-            seq("(", "fun", "(", repeat($.patt), ")", repeat1($.expr), ")"),
+        lambda: ($) => seq("(", "fun", $.lambda_header, repeat1($.expr), ")"),
+        lambda_header: ($) => seq("(", repeat($.patt), ")"),
 
         list: ($) => seq("[", repeat($.expr), "]"),
 
@@ -154,7 +148,7 @@ module.exports = grammar({
                     field("function", $.ident),
                 ),
             ),
-        variant: (_) => token(seq(":", IDENT)),
+        variant: (_) => token(seq(":", /[a-z_][A-Za-z0-9_-]*/)),
         string: (_) => token(seq('"', repeat(choice(/[^"\\]/, /\\./)), '"')),
         escape: (_) =>
             token.immediate(
@@ -167,6 +161,6 @@ module.exports = grammar({
                     ),
                 ),
             ),
-        ident: (_) => token(IDENT),
+        ident: (_) => token(/[a-z_][A-Za-z0-9_-]*/),
     },
 });
