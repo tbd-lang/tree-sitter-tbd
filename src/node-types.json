@@ -343,16 +343,17 @@
   {
     "type": "lambda_header",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "patt",
-          "named": true
-        }
-      ]
+    "fields": {
+      "parameter": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "patt",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {

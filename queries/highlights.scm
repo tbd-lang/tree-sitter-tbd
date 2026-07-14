@@ -39,7 +39,7 @@
 (function_header
   "(" @function
   name: (ident) @function
-  parameter: (patt (ident) @variable.parameter)
+  parameter: (patt _ @variable.parameter)
   ")" @function
   (#set! priority 130))
 
@@ -102,6 +102,7 @@
 
 (lambda_header
   "(" @keyword
+  parameter: (patt _ @variable.parameter)
   ")" @keyword
   (#set! priority 130))
 

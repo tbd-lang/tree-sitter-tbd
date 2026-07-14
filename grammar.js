@@ -92,7 +92,7 @@ module.exports = grammar({
             ),
 
         lambda: ($) => seq("(", "fun", $.lambda_header, repeat1($.expr), ")"),
-        lambda_header: ($) => seq("(", repeat($.patt), ")"),
+        lambda_header: ($) => seq("(", repeat(field("parameter", $.patt)), ")"),
 
         list: ($) => seq("[", repeat($.expr), "]"),
 
