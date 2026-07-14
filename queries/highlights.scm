@@ -100,6 +100,11 @@
   ")" @keyword
   (#set! priority 130))
 
+(lambda_header
+  "(" @keyword
+  ")" @keyword
+  (#set! priority 130))
+
 (call
   "(" @function
   callee: (expr) @function
@@ -113,9 +118,9 @@
   (#set! priority 130))
 
 (call
-  "(" @module
-  callee: (expr (module_access) @module)
-  ")" @module
+  "(" @function
+  callee: (expr (module_access) @function)
+  ")" @function
   (#set! priority 130))
 
 [
