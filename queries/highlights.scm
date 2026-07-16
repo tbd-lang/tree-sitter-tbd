@@ -12,9 +12,7 @@
 ((variant) @constant
   (#set! priority 130))
 
-(module_access
-  module: (ident) @module
-  "." @punctuation.delimiter
+((module_name) @module
   (#set! priority 140))
 
 
@@ -61,9 +59,6 @@
   "import" @keyword
   ")" @keyword
  (#set! priority 140))
-
-((import_path) @module
-  (#set! priority 140))
 
 (assign
   "(" @keyword

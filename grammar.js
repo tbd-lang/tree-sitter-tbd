@@ -11,8 +11,7 @@ module.exports = grammar({
 
         stmt: ($) => choice($.import, $.external, $.function),
 
-        import: ($) => seq("(", "import", repeat1($.import_path), ")"),
-        import_path: ($) => seq($.ident, repeat(seq("/", $.ident))),
+        import: ($) => seq("(", "import", repeat(seq($.ident, "/")), $.module_name, ")"),
 
         external: ($) => seq("(", "external", $.external_header, $.string, ")"),
         external_header: ($) =>
@@ -143,11 +142,12 @@ module.exports = grammar({
                 2,
                 seq(
                     field("path", repeat(seq($.ident, "/"))),
-                    field("module", $.ident),
-                    token.immediate("."),
+                    field("module", $.module_name),
+                    ".",
                     field("function", $.ident),
                 ),
             ),
+        module_name: (_) => token(/[A-Z][A-Za-z0-9_-]*/),
         variant: (_) => token(seq(":", /[a-z_][A-Za-z0-9_-]*/)),
         string: (_) => token(seq('"', repeat(choice(/[^"\\]/, /\\./)), '"')),
         escape: (_) =>

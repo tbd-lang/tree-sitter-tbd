@@ -300,22 +300,11 @@
       "required": true,
       "types": [
         {
-          "type": "import_path",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "import_path",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
           "type": "ident",
+          "named": true
+        },
+        {
+          "type": "module_name",
           "named": true
         }
       ]
@@ -454,7 +443,7 @@
         "required": true,
         "types": [
           {
-            "type": "ident",
+            "type": "module_name",
             "named": true
           }
         ]
@@ -682,6 +671,10 @@
   {
     "type": "match",
     "named": false
+  },
+  {
+    "type": "module_name",
+    "named": true
   },
   {
     "type": "numeric",
