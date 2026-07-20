@@ -11,7 +11,8 @@ module.exports = grammar({
 
         stmt: ($) => choice($.import, $.external, $.function),
 
-        import: ($) => seq("(", "import", repeat(seq($.ident, "/")), $.module_name, ")"),
+        import: ($) =>
+            seq("(", "import", repeat(seq($.ident, "/")), $.module_name, ")"),
 
         external: ($) => seq("(", "external", $.external_header, $.string, ")"),
         external_header: ($) =>
@@ -104,15 +105,16 @@ module.exports = grammar({
                 "}",
             ),
 
-        binary: ($) =>
+        binary: ($) => seq(token("<<"), repeat($.binary_segment), token(">>")),
+        binary_segment: ($) =>
             seq(
-                token("<<"),
-                repeat(seq($.expr, "|", $.binary_option)),
-                token(">>"),
+                "(",
+                $.expr,
+                field("type", $.ident),
+                field("length", optional($.numeric)),
+                field("endianness", optional($.ident)),
+                ")",
             ),
-
-        binary_option: (_) =>
-            token(choice(seq(choice("u", "i", "f"), /[0-9]+/), "binary")),
 
         op: (_) =>
             token(

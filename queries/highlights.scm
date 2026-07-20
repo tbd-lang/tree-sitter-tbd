@@ -119,6 +119,12 @@
   ")" @function
   (#set! priority 130))
 
+(binary_segment
+  "(" @punctuation.bracket
+  type: (ident) @type 
+  ")" @punctuation.bracket
+  (#set! priority 140))
+
 [
   "("
   ")"
@@ -130,9 +136,5 @@
   "<<"
   ">>"
 ] @punctuation.bracket
-
-[
-  "|"
-] @punctuation.delimiter
 
 (ident) @variable

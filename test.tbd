@@ -1,1 +1,7 @@
-(function (add a b) (Math.add a b))
+(function (main)
+    (let b <<
+        ("hello world" bytes 11)
+        (42 int 12 big)
+        (42069 bytes)
+    >>)
+)

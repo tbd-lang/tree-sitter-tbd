@@ -38,9 +38,51 @@
       "required": false,
       "types": [
         {
-          "type": "binary_option",
+          "type": "binary_segment",
           "named": true
-        },
+        }
+      ]
+    }
+  },
+  {
+    "type": "binary_segment",
+    "named": true,
+    "fields": {
+      "endianness": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      },
+      "length": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "numeric",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
         {
           "type": "expr",
           "named": true
@@ -629,10 +671,6 @@
     "named": false
   },
   {
-    "type": "binary_option",
-    "named": true
-  },
-  {
     "type": "boolean",
     "named": true
   },
@@ -702,10 +740,6 @@
   },
   {
     "type": "{",
-    "named": false
-  },
-  {
-    "type": "|",
     "named": false
   },
   {

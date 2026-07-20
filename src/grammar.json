@@ -691,21 +691,8 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "expr"
-              },
-              {
-                "type": "STRING",
-                "value": "|"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "binary_option"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "binary_segment"
           }
         },
         {
@@ -717,43 +704,62 @@
         }
       ]
     },
-    "binary_option": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SEQ",
+    "binary_segment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expr"
+        },
+        {
+          "type": "FIELD",
+          "name": "type",
+          "content": {
+            "type": "SYMBOL",
+            "name": "ident"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "length",
+          "content": {
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "u"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "i"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "f"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "numeric"
               },
               {
-                "type": "PATTERN",
-                "value": "[0-9]+"
+                "type": "BLANK"
               }
             ]
-          },
-          {
-            "type": "STRING",
-            "value": "binary"
           }
-        ]
-      }
+        },
+        {
+          "type": "FIELD",
+          "name": "endianness",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "ident"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
     },
     "op": {
       "type": "TOKEN",
