@@ -144,12 +144,8 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "FIELD",
-            "name": "parameter",
-            "content": {
-              "type": "SYMBOL",
-              "name": "ident"
-            }
+            "type": "SYMBOL",
+            "name": "ident"
           }
         },
         {
@@ -201,12 +197,8 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "FIELD",
-            "name": "parameter",
-            "content": {
-              "type": "SYMBOL",
-              "name": "patt"
-            }
+            "type": "SYMBOL",
+            "name": "patt"
           }
         },
         {
@@ -584,12 +576,8 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "FIELD",
-            "name": "parameter",
-            "content": {
-              "type": "SYMBOL",
-              "name": "patt"
-            }
+            "type": "SYMBOL",
+            "name": "patt"
           }
         },
         {

@@ -1,13 +1,14 @@
-(comment) @comment
+((comment) @comment (#set! priority 127))
 
-(string) @string
+((string) @string (#set! priority 127))
 
-(char) @character
+((char) @character (#set! priority 127))
 
-(numeric) @number
-(unit) @number
+((numeric) @number (#set! priority 127))
 
-(boolean) @boolean
+((unit) @number (#set! priority 127))
+
+((boolean) @boolean (#set! priority 127))
 
 ((variant) @constant
   (#set! priority 130))
@@ -34,13 +35,6 @@
   ")" @function
   (#set! priority 130))
 
-(function_header
-  "(" @function
-  name: (ident) @function
-  parameter: (patt _ @variable.parameter)
-  ")" @function
-  (#set! priority 130))
-
 (external
   "(" @keyword
   "external" @keyword
@@ -50,13 +44,6 @@
 (external_header
   "(" @function
   name: (ident) @function
-  ")" @function
-  (#set! priority 130))
-
-(external_header
-  "(" @function
-  name: (ident) @function
-  parameter: (ident) @variable.parameter
   ")" @function
   (#set! priority 130))
 
@@ -103,7 +90,6 @@
 
 (lambda_header
   "(" @keyword
-  parameter: (patt _ @variable.parameter)
   ")" @keyword
   (#set! priority 130))
 
@@ -131,7 +117,7 @@
   ")" @punctuation.bracket
   (#set! priority 140))
 
-[
+([
   "("
   ")"
   "["
@@ -141,6 +127,6 @@
   "#{"
   "<<"
   ">>"
-] @punctuation.bracket
+] @punctuation.bracket (#set! priority 125))
 
-(ident) @variable
+((ident) @variable (#set! priority 100))

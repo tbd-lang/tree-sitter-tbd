@@ -16,22 +16,12 @@ module.exports = grammar({
 
         external: ($) => seq("(", "external", $.external_header, $.string, ")"),
         external_header: ($) =>
-            seq(
-                "(",
-                field("name", $.ident),
-                repeat(field("parameter", $.ident)),
-                ")",
-            ),
+            seq("(", field("name", $.ident), repeat($.ident), ")"),
 
         function: ($) =>
             seq("(", "function", $.function_header, $.function_body, ")"),
         function_header: ($) =>
-            seq(
-                "(",
-                field("name", $.ident),
-                repeat(field("parameter", $.patt)),
-                ")",
-            ),
+            seq("(", field("name", $.ident), repeat($.patt), ")"),
         function_body: ($) => repeat1($.expr),
 
         patt: ($) =>
@@ -92,7 +82,7 @@ module.exports = grammar({
             ),
 
         lambda: ($) => seq("(", "fun", $.lambda_header, repeat1($.expr), ")"),
-        lambda_header: ($) => seq("(", repeat(field("parameter", $.patt)), ")"),
+        lambda_header: ($) => seq("(", repeat($.patt), ")"),
 
         list: ($) => seq("[", repeat($.expr), "]"),
 

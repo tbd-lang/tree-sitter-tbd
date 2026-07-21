@@ -260,17 +260,17 @@
             "named": true
           }
         ]
-      },
-      "parameter": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "ident",
-            "named": true
-          }
-        ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ident",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -320,17 +320,17 @@
             "named": true
           }
         ]
-      },
-      "parameter": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "patt",
-            "named": true
-          }
-        ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "patt",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -374,17 +374,16 @@
   {
     "type": "lambda_header",
     "named": true,
-    "fields": {
-      "parameter": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "patt",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "patt",
+          "named": true
+        }
+      ]
     }
   },
   {
