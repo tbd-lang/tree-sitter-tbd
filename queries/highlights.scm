@@ -50,6 +50,12 @@
 (external_header
   "(" @function
   name: (ident) @function
+  ")" @function
+  (#set! priority 130))
+
+(external_header
+  "(" @function
+  name: (ident) @function
   parameter: (ident) @variable.parameter
   ")" @function
   (#set! priority 130))
