@@ -16,11 +16,6 @@
 ((module_name) @module
   (#set! priority 140))
 
-
-(module_access
-  function: (ident) @function
-  (#set! priority 130))
-
 (op) @operator
 
 (function
