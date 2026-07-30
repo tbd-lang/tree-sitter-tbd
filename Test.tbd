@@ -1,3 +1,8 @@
-(function (add a b)
-    (Lib.add a b)
+
+
+
+
+(function (main)
+    (doc hello there! (this is a doc btw))
+    ()
 )

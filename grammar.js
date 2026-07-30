@@ -1,15 +1,26 @@
 module.exports = grammar({
     name: "tbd",
 
-    extras: ($) => [/\s/, $.comment],
     word: ($) => $.ident,
 
     rules: {
         source_file: ($) => repeat($.stmt),
 
-        comment: (_) => choice(token(seq("--", /.*/)), token(seq("#!", /.*/))),
+        comment: ($) =>
+            choice(
+                token(seq("--", /.*/)),
+                token(seq("#!", /.*/)),
+                seq(
+                    "(",
+                    "doc",
+                    repeat(choice(/[^()]/, $.balanced_parens)),
+                    ")",
+                ),
+            ),
+        balanced_parens: ($) =>
+            seq("(", repeat(choice(/[^()]/, $.balanced_parens)), ")"),
 
-        stmt: ($) => choice($.import, $.external, $.function),
+        stmt: ($) => choice($.comment, $.import, $.external, $.function),
 
         import: ($) =>
             seq("(", "import", repeat(seq($.ident, "/")), $.module_name, ")"),
@@ -26,6 +37,7 @@ module.exports = grammar({
 
         patt: ($) =>
             choice(
+                $.comment,
                 $.call,
                 $.list,
                 $.tuple,
@@ -42,6 +54,7 @@ module.exports = grammar({
 
         expr: ($) =>
             choice(
+                $.comment,
                 $.function,
                 $.lambda,
                 $.assign,
